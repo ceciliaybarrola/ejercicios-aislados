@@ -84,7 +84,7 @@ else
 	}
 }
 document.write("El huesped que trajo a la mayor cantidad de personas: "+maximoCantidadPersonasHuesped+"<br>");
-document.write("El huesped que se quedo mayor cantidad de dias; "+maximoCantidadDiasPersona+" y se quedo por "+maximoCantidadDias+" dias"+"<br>");
+document.write("La cantidad de personas que se quedaron por la mayor cantidad de dias es: "+maximoCantidadDiasPersona+" y se quedo por "+maximoCantidadDias+" dias"+"<br>");
 document.write("La forma de pago mas utilizada es: "+formaDePagoMasUsada+"<br>");
 document.write("El rromedio cantidad de dias por reserva es: "+promedioDias+"<br>");
 
