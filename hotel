@@ -1,0 +1,90 @@
+
+function mostrar()
+{
+var nombre
+var cantidadPersonas;
+var cantidadDias;
+var formaDePago;
+var reservas;
+var maximoCantidadPersonas;
+var maximoCantidadPersonasHuesped;
+var maximoCantidadDias;
+var maximoCantidadDiasPersona;
+var contadorDeReservas=0;
+var contadorEfetivo=0;
+var contadorQR=0;
+var contadorTarjeta=0;
+var acumuladorCantidadDias=0;
+var promedioDias;
+var formaDePagoMasUsada;
+do
+{
+		nombre=prompt("ingrese un nombre");
+		while (!((nombre>="a"&&nombre<="z")||(nombre>"A"&&nombre<="Z")))//(!isNan(nombre))
+		{
+			nombre=prompt("Ingrese un nombre valido");
+		}
+		cantidadPersonas=parseInt(prompt("ingrese cantidad de personas"));
+		while (isNaN(cantidadPersonas) ||cantidadPersonas<=0)
+		{
+			cantidadPersonas=prompt("no es un numero, ingrese cantidad de personas");
+		}
+		cantidadDias=parseInt(prompt("Ingrese cantidad de dias"));
+		while (isNaN(cantidadDias) ||cantidadDias<=0)
+		{
+			cantidadDias=prompt("No es un numero.Ingrese cantidad de dias");
+		}
+		formaDePago=prompt("ingrese una forma de pago");
+		while (formaDePago!="efectivo" && formaDePago!="tarjeta" && formaDePago!="qr")
+		{
+			formaDePago=prompt("Ingrese una forma de pago valida");	
+		}//fin validaciones
+	contadorDeReservas=contadorDeReservas+1;
+	if (contadorDeReservas==1|| maximoCantidadPersonas<cantidadPersonas)
+	{
+	maximoCantidadPersonas=cantidadPersonas;
+	maximoCantidadPersonasHuesped=nombre;
+	}
+	if (contadorDeReservas==1|| maximoCantidadDias<cantidadDias)
+	{
+	maximoCantidadDias=cantidadDias;
+	maximoCantidadDiasPersona=nombre;
+	}
+	switch (formaDePago)
+	{
+		case "tarjeta":
+		contadorTarjeta=contadorTarjeta+1;
+			break;
+		case "qr":
+		contadorQR=contadorQR+1;
+			break;
+		default:
+		contadorEfetivo=contadorEfetivo+1
+			break;
+
+	}
+	acumuladorCantidadDias=acumuladorCantidadDias + cantidadDias;	
+reservas=prompt("¿Desea realizar otra reserva?");
+}while (reservas=="si")
+promedioDias=acumuladorCantidadDias/contadorDeReservas;
+if (contadorQR>contadorEfetivo && contadorQR>contadorTarjeta )
+{
+	formaDePagoMasUsada="QR";
+}
+else 
+{
+	if (contadorTarjeta>contadorEfetivo && contadorTarjeta>contadorQR )
+	{
+		formaDePagoMasUsada="Tarjeta";
+
+	}
+	else
+	{
+		formaDePagoMasUsada="Efectivo";
+	}
+}
+document.write("huesped que trajo a la mayor cantidad de personas: "+maximoCantidadPersonasHuesped+"<br>");
+document.write("huesped que se quedo mayor cantidad de dias; "+maximoCantidadDiasPersona+"<br>");
+document.write("la forma de pago mas utilizada es: "+formaDePagoMasUsada+"<br>");
+document.write("promedio cantidad de dias por reserva"+promedioDias+"<br>");
+}
