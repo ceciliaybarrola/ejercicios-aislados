@@ -1,0 +1,63 @@
+function mostrar()
+{
+var i=0;
+var tipo;
+var precio;
+var unidades;
+var marca;
+var fabricante;
+var precioBarbijoCaro=99;
+var cantidadBarbijoCaro;
+var fabricanteBarbijoCaro;
+var masUnidades;
+var itemMasUnidades;
+var acumuladorJabones=0;
+//PEDIDO DE INFORMACION.
+do
+{
+    tipo=prompt("ingrese un producto de prevencion de contagio");
+    while (tipo!="jabon" && tipo!="barbijo" && tipo!="alcohol")
+    {
+        tipo=prompt("ingrese un producto de prevencion de contagio valido");
+    }
+    precio=prompt("ingrese el precio del producto");
+    while (isNaN(precio)||precio<100||precio>300)
+    {
+        precio=prompt("no es valido, ingrese el precio del producto");
+    }
+
+    unidades=prompt("ingrese cantidad de unidades");
+    while (isNaN(unidades)||unidades<0||unidades>1000)
+    {
+        unidades=prompt("no es valido, ingrese cantidad de  unidades");
+    }
+    marca=prompt("ingrese marca");
+    fabricante=prompt("ingrese fabricante");
+//VALIDACIONES
+if (tipo=="barbijo"&& precioBarbijoCaro<precio)
+{
+    precioBarbijoCaro=precio;
+    cantidadBarbijoCaro=unidades;
+    fabricanteBarbijoCaro=fabricante;
+}
+
+if (i==0||masUnidades<unidades)
+{
+    masUnidades=unidades;
+    itemMasUnidades=fabricante;
+
+}
+if(tipo=="jabon")
+{
+    acumuladorJabones= acumuladorJabones+ parseInt(unidades);
+}
+    i=i+1;
+
+}while(i<5)
+
+document.write("barbijos mas caros unidades: "+cantidadBarbijoCaro+"<br>");
+document.write("barbijos mas caros fabricantes: "+fabricanteBarbijoCaro+"<br>");
+document.write("item con mas unidades fabricante "+itemMasUnidades+"<br>");
+document.write("cantidad de jabones "+acumuladorJabones+"<br>");
+
+}
