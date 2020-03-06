@@ -1,0 +1,64 @@
+function mostrar()
+{
+var alimento;
+var tipo;
+var peso;
+var precioPorKilo;
+var respuesta;
+var acPrecio=0;
+var tipoAlimentoMasCaro;
+var AlimentoMasCaro;
+var i=0;
+var descuento;
+var acPeso=0;
+var promedio;
+do
+{
+    alimento=prompt("ingrese un alimento");
+        while(!isNaN(alimento))
+        {
+            alimento=prompt("ingrese un alimento valido");
+
+        }
+    tipo=prompt("ingrese tipo de alimento 'v','m' o 'a'");
+        while(tipo!="v"&&tipo!="m"&&tipo!="a")
+        {
+            tipo=prompt("ingrese tipo de alimento valido: 'v','m' o 'a'");
+        }
+    peso=prompt("ingrese peso");
+        while(isNaN(peso)||peso<10||peso>1000)
+        {
+            peso=prompt("ingrese peso valido");
+        }
+    precioPorKilo=prompt("ingrese precio por kilo");
+        while(isNaN(peso)||peso<0)
+        {
+            precioPorKilo=prompt("ingrese precio por kilo valido");
+        }
+
+    acPrecio=acPrecio+parseInt(precioPorKilo)*parseInt(peso);
+    acPeso=acPeso+peso;
+    if (i==0||AlimentoMasCaro<precioPorKilo)
+    {
+        AlimentoMasCaro=precioPorKilo;
+        tipoAlimentoMasCaro=tipo;
+    }
+    i=i+1;
+    respuesta=prompt("ingrese 's' para seguir ingresando productos");
+}while(respuesta=="s")
+
+if (peso>100)
+{
+    descuento=acPrecio-acPrecio*15/100;
+}
+if (peso>300)
+{
+    descuento=acPrecio-acPrecio*25/100;
+}
+promedio=acPrecio/acPeso;
+
+document.write("precio en bruto: "+acPrecio+"<br>");
+document.write("precio descuento: "+descuento+"<br>");
+document.write("tipo alimento mas caro: "+tipoAlimentoMasCaro+"<br>");
+document.write("promedio de peso por kilo: "+promedio+"<br>");
+}
