@@ -1,0 +1,88 @@
+function mostrar()
+{
+var nombre;
+var edad;
+var sexo;
+var estado;
+var respuesta;
+var i=0;
+var hombreJovenCasado;
+var edadHombreJovenCasado;
+var mujeresCasadasViudas=0;
+var acMujeres=0;
+var contMujeres=0;
+var promedioMujeres;
+var acHombres=0;
+var contHombres=0;
+var promedioHombres;
+var edadMasViejo=17;
+var nombreMasViejo;
+var sexoMasViejo;
+
+do
+{
+nombre=prompt("ingrese nombre");
+    while(!isNaN(nombre))
+    {
+        nombre=prompt("ingrese nombre valido");
+    }
+edad=prompt("ingrese edad");
+    while(isNaN(edad)||edad<18)
+    {
+        edad=prompt("ingrese edad +18");
+    }
+sexo=prompt("ingrese sexo 'f' o 'm'");
+    while(sexo!="f"&&sexo!="m")
+    {
+        sexo=prompt("no es un sexo valido, ingrese sexo 'f' o 'm'");
+    }
+estado=prompt("ingrese estado civil");
+    while(estado!="soltero"&&estado!="casado"&&estado!="viudo")
+    {
+        estado=prompt("ingrese estado civil valido");
+    }//FIN VALIDACIONES
+i=i+1;
+if (edadMasViejo<edad)
+{
+    edadMasViejo=edad;
+    nombreMasViejo=nombre;
+    sexoMasViejo=sexo;
+
+}
+if(sexo=="m"&&estado=="casado")
+{
+    if (i==1||edadHombreJovenCasado<edad)
+    {
+        edadHombreJovenCasado=edad;
+        hombreJovenCasado=nombre;
+    }
+}
+if(sexo=="f"&&estado=="casado"&&estado=="viudo")
+{
+    mujeresCasadasViudas=mujeresCasadasViudas+1;
+}
+if(sexo=="f")
+{
+    acMujeres=acMujeres+ parseInt(edad);
+    contMujeres=contMujeres+1;
+}
+if (sexo=="m"&&estado=="soltero")
+{
+    acHombres=acHombres+edad;
+    contHombres=contHombres+1;
+}
+
+respuesta=prompt("ingrese 's' para seguir ingresando");
+}while(respuesta=="s")
+
+promedioHombres=parseInt(acHombres)/parseInt(contHombres);
+promedioMujeres=parseInt(acMujeres)/parseInt(contMujeres);
+
+document.write("hombre casado mas joven: "+hombreJovenCasado+"<br>");
+document.write("el sexo del nombre mas viejo es: "+sexoMasViejo+" y su nombre es: "+nombreMasViejo+"<br>");
+document.write("la cantidad de mujeres casadas y viudas es "+mujeresCasadasViudas+"<br>");
+document.write("promedio edad mujeres "+promedioMujeres+"<br>");
+document.write("promedio edad hombres solteros "+promedioHombres+"<br>");
+
+
+}
