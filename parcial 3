@@ -18,7 +18,7 @@ var promedioHombres;
 var edadMasViejo=17;
 var nombreMasViejo;
 var sexoMasViejo;
-
+var flagJovenCasado=0;
 do
 {
 nombre=prompt("ingrese nombre");
@@ -49,15 +49,19 @@ if (edadMasViejo<edad)
     sexoMasViejo=sexo;
 
 }
+
 if(sexo=="m"&&estado=="casado")
 {
-    if (i==1||edadHombreJovenCasado<edad)
+    if (flagJovenCasado==0||edadHombreJovenCasado>edad)
     {
         edadHombreJovenCasado=edad;
         hombreJovenCasado=nombre;
     }
+    flagJovenCasado=flagJovenCasado+1;
 }
-if(sexo=="f"&&estado=="casado"&&estado=="viudo")
+
+
+if(sexo=="f"&&estado=="casado"||estado=="viudo")
 {
     mujeresCasadasViudas=mujeresCasadasViudas+1;
 }
