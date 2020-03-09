@@ -1,0 +1,80 @@
+function mostrar()
+{
+var animal;
+var peso;
+var temperatura;
+var respuesta;
+var temperaturasPares=0;
+var i=0;
+var pesoAnimalPesado;
+var animalPesado;
+var temperaturaPesado;
+var contadorAnimalBajoCero=0;
+var acumuladorPeso=0;
+var promedioPeso;
+var pesoMaximoBajoCero;
+var pesoMinimoBajoCero;
+var flagBajoCero=0;
+
+do
+{
+    animal=prompt("Ingrese un animal");
+        while(!isNaN(animal))
+        {
+            animal=prompt("Ingrese un animal valido");
+        }
+    peso=parseInt(prompt("ingrese el peso"));
+        while(isNaN(peso)||peso<1||peso>1000)
+        {
+            peso=prompt("no es valido, ingrese el peso");
+        }
+    temperatura=parseInt(prompt("ingrese su temperatura"));
+        while(isNaN(temperatura)||temperatura<-30||temperatura>30)
+        {
+            temperatura=prompt("no es valido, ingrese su temperatura");
+        }//FIN DE LAS VALIDACIONES
+    acumuladorPeso=acumuladorPeso+peso;
+    if(temperatura%2==0)
+    {
+        temperaturasPares=temperaturasPares+1;
+    }
+    if(i==0||pesoAnimalPesado<peso)
+    {
+        pesoAnimalPesado=peso;
+        temperaturaPesado=temperatura;
+        animalPesado=animal;
+    }
+    if(temperatura<0)
+    {
+        contadorAnimalBajoCero=contadorAnimalBajoCero+1;
+        if(flagBajoCero==0||pesoMaximoBajoCero<peso)
+        {
+            pesoMaximoBajoCero=peso;
+        }
+        if(flagBajoCero==0||pesoMinimoBajoCero>peso)
+        {
+            pesoMinimoBajoCero=peso;
+        }
+        flagBajoCero=flagBajoCero+1;
+    }
+    i=i+1;
+    respuesta=prompt("Ingrese 'si' para seguir ingresando animales");
+}while (respuesta=="si")
+promedioPeso=acumuladorPeso/i;
+
+document.write("cantidad temperaturas pares "+temperaturasPares+"<br>");
+document.write("el nombre del animal mas pesado es "+animalPesado+" y su temperatura de habitat es "+temperaturaPesado+"<br>");
+document.write("la cantidad de animales que viven en temperaturas bajo cero es "+contadorAnimalBajoCero+"<br>");
+document.write("el promedio de los pesos es "+promedioPeso+"<br>");
+document.write("el peso mínimo de todos los animales cuyas temperaturas sean bajo cero es "+pesoMinimoBajoCero+"<br>");
+document.write("el peso maximo de todos los animales cuyas temperaturas sean bajo cero es "+pesoMaximoBajoCero+"<br>");
+
+}
+/*Realizar el algoritmo que permita ingresar el nombre de un animal del zoológico, 
+el peso el cual debe ser entre 1 y 1000 y la temperatura del hábitat (entre -30 y 30) 
+hasta que el usuario quiera e informar al terminar el ingreso por document.write:
+a) La cantidad de temperaturas pares.
+b) El nombre y temperatura del animal más pesado
+c) La cantidad de animales que viven a menos de 0 grados.
+d) El promedio del peso de todos los animales.
+f) El peso máximo y el mínimo de todos los animales cuyas temperaturas sean bajo cero.*/
