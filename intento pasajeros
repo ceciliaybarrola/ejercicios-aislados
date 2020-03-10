@@ -1,0 +1,86 @@
+function mostrar()
+{
+var nombre;
+var edad;
+var sexo;
+var estadoCivil;
+var edadJovenCasado;
+var nombreJovenCasado;
+var flagJovenCasado=0;
+var sexoPasajeroViejo;
+var nombrePasajeroViejo;
+var edadPasajeroViejo=17;
+var contadorCasadasViudas=0;
+var acumuladorEdadMujeres=0;
+var contadorMujeres=0;
+var acumuladorEdadSolteros=0;
+var contadorHombresSolteros=0;
+var promedioMujeres;
+var promedioHombres;
+var respuesta;
+var i=0;
+do
+{
+    nombre=prompt("ingrese nombre");
+    edad=prompt("ingrese edad");
+    while(edad<18)
+    {
+        edad=prompt("ingrese edad valida");
+    }
+    edad=parseInt(edad);
+    sexo=prompt("ingrese sexo");
+    while(sexo!="m"&&sexo!="f")
+    {
+        sexo=prompt("ingrese sexo");
+    }
+    estadoCivil=prompt("ingrese el estado civil");
+    while(estadoCivil!="soltero"&&estadoCivil!="casado"&&estadoCivil!="viudo")
+    {
+        estadoCivil=prompt("ingrese el estado civil");
+    }//FIN VALIDACIONES
+    if (sexo=="m"&&estadoCivil=="soltero")
+    {
+        acumuladorEdadSolteros=acumuladorEdadSolteros+edad;
+        contadorHombresSolteros=contadorHombresSolteros+1;
+    }
+    if (sexo=="m"&&estadoCivil=="casado")
+    {
+        if (flagJovenCasado==0||edadJovenCasado>edad)
+        {
+            edadJovenCasado=edad;
+            nombreJovenCasado=nombre;
+            flagJovenCasado=flagJovenCasado+1;
+        }
+    }
+
+    if(edadPasajeroViejo<edad)
+    {
+        edadPasajeroViejo=edad;
+        sexoPasajeroViejo=sexo;
+        nombrePasajeroViejo=nombre;
+    }
+    if (sexo=="f")
+    {
+        acumuladorEdadMujeres=acumuladorEdadMujeres+edad;
+        contadorMujeres++;
+
+        if(estadoCivil!="casado")
+        {
+            contadorCasadasViudas++;
+        }
+    }
+    i++;
+respuesta=prompt("¿Desea seguir ingresando datos?")
+}while(respuesta=="si")
+
+promedioHombres=acumuladorEdadSolteros/contadorHombresSolteros;
+promedioMujeres=acumuladorEdadMujeres/contadorMujeres;
+
+document.write(+nombreJovenCasado+"<br>");
+document.write(+sexoPasajeroViejo+"<br>");
+document.write(+nombrePasajeroViejo+"<br>");
+document.write(+contadorCasadasViudas+"<br>");
+document.write(+promedioMujeres+"<br>");
+document.write(+promedioHombres+"<br>");
+
+}
