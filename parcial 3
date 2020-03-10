@@ -90,3 +90,94 @@ document.write("promedio edad hombres solteros "+promedioHombres+"<br>");
 
 
 }
+/////////////////////////////////////////////////////////////////
+function mostrar()
+{
+var nombre;
+var edad;
+var sexo;
+var estadoCivil;
+var respuesta;
+var edadJovenCasado;
+var flagHombreCasado=0;
+var nombreJovenCasado;
+var pasajeroMasViejo;
+var sexoMasViejo;
+var nombreMasViejo;
+var contadorViudasCasadas=0;
+var contadorMujeres=0;
+var acumuladorEdadMujeres=0;
+var promedioMujeres;
+var acumuladorEdadHombres=0;
+var contadorHombresSolteros=0;
+var promedioHombresSolteros;
+var i=0;
+
+do
+{
+    nombre=prompt("Ingrese su nombre");
+        while (!isNaN(nombre))
+        {
+            nombre=prompt("No es valido. Ingrese su nombre");
+        }
+    edad=parseInt(prompt("Ingrese su edad"));
+        while (isNaN(edad)||edad<18)
+        {
+            edad=prompt("No es valido. Ingrese su edad");
+        }
+    sexo=prompt("Ingrese su sexo");
+        while (sexo!="f"&&sexo!="m")
+        {
+            sexo=prompt("No es valido. Ingrese su sexo 'f' o 'm'");
+        }
+    estadoCivil=prompt("Ingrese su estado civil");
+        while(estadoCivil!="soltero"&&estadoCivil!="casado"&& estadoCivil!="viudo")
+        {
+            estadoCivil=prompt("No es valido. Ingrese su estado civil");
+        }//fin validaciones
+    if(sexo=="m"&&estadoCivil=="casado")
+    {
+        if(flagHombreCasado==0||edadJovenCasado>edad)
+        {
+            edadJovenCasado=edad;
+            nombreJovenCasado=nombre;
+        }
+        flagHombreCasado=flagHombreCasado+1;
+    }
+    if (i==0||pasajeroMasViejo<edad)
+    {
+        pasajeroMasViejo=edad;
+        nombreMasViejo=nombre;
+        sexoMasViejo=sexo;
+    }
+    if (sexo=="f"&&estadoCivil=="casado"||estadoCivil=="viudo")
+    {
+        contadorViudasCasadas=contadorViudasCasadas+1;
+    }
+    if (sexo=="f")
+    {
+        contadorMujeres=contadorMujeres+1;
+        acumuladorEdadMujeres=acumuladorEdadMujeres+edad;
+    }
+    if (sexo=="m"&&estadoCivil=="soltero")
+    {
+        contadorHombresSolteros=contadorHombresSolteros+1;
+        acumuladorEdadHombres=acumuladorEdadHombres+edad;
+    }
+
+    i=i+1;
+    respuesta=prompt("¿Desea seguir ingresando informacion?");
+}while (respuesta=="si")
+
+promedioHombresSolteros=acumuladorEdadHombres/contadorHombresSolteros;
+promedioMujeres=acumuladorEdadMujeres/contadorMujeres;
+
+document.write("El nombre del hombre casado mas joven es: "+nombreJovenCasado+"<br>");
+document.write("El nombre del hombre del pasajero mas viejo es "+nombreMasViejo+" y su sexo es "+sexoMasViejo+"<br>");
+document.write("La cantidad de mujeres casadas o viudas es "+contadorViudasCasadas+"<br>");
+document.write("el promedio de la edad de las mujeres es "+promedioMujeres+"<br>");
+document.write("el promedio de la edad de los hombres solteros es "+promedioHombresSolteros+"<br>");
+
+
+}
+
