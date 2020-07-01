@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1593522461 source:c:\users\user1\desktop\practica parcial\practica_vuelos\inputs.c
+	"Inputs.h"
+
+1593266904 c:\users\user1\desktop\practica parcial\practica_vuelos\inputs.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1593524785 source:c:\users\user1\desktop\practica parcial\practica_vuelos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"Vuelos.h"
+	"Pilotos.h"
+
+1593521261 c:\users\user1\desktop\practica parcial\practica_vuelos\controller.h
+	"parser.h"
+	"Inputs.h"
+	"LinkedList.h"
+	"Pilotos.h"
+
+1593513927 c:\users\user1\desktop\practica parcial\practica_vuelos\parser.h
+	"LinkedList.h"
+	"Vuelos.h"
+	"Pilotos.h"
+	<stdio.h>
+	<stdlib.h>
+
+1593525901 source:c:\users\user1\desktop\practica parcial\practica_vuelos\vuelos.c
+	"Vuelos.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"Inputs.h"
+	"Pilotos.h"
+	"Controller.h"
+
+1593524785 source:c:\users\user1\desktop\practica parcial\practica_vuelos\controller.c
+	"Controller.h"
+	"Vuelos.h"
+
+1593519164 c:\users\user1\desktop\practica parcial\practica_vuelos\linkedlist.h
+
+1593523725 source:c:\users\user1\desktop\practica parcial\practica_vuelos\parser.c
+	"parser.h"
+
+1593520549 c:\users\user1\desktop\practica parcial\practica_vuelos\vuelos.h
+	"LinkedList.h"
+
+1593519164 source:c:\users\user1\desktop\practica parcial\practica_vuelos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593523430 source:c:\users\user1\desktop\practica parcial\practica_vuelos\pilotos.c
+	"Pilotos.h"
+
+1593437384 c:\users\user1\desktop\practica parcial\practica_vuelos\pilotos.h
+	"LinkedList.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
